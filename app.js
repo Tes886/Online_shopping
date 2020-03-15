@@ -4,7 +4,7 @@ const adminRoutes = require('./routes/admin');
 const userRoutes = require('./routes/user');
 
 const shopRoutes = require('./routes/shop');
-//const mongoconnect =  require('./util/database').mongoConnect;
+const mongoconnect =  require('./util/database').mongoConnect;
 const mongoose = require('mongoose');
 const User = require('./models/user');
 
