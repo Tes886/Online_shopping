@@ -1,0 +1,57 @@
+<%- include('fragments/head.ejs')%>
+<link rel="stylesheet" href="/css/product.css">
+<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--include navigation.ejs-->
+    <%- include('fragments/navigation.ejs')%>
+
+
+
+    <main>
+        <h1>My Products</h1>
+        <!--<p>List of all the products...</p>-->
+
+        <div class="grid">
+            <% for (let product of products) {%>
+            <article class="card product-item">
+
+                <header class="card__header">
+                    <h1 class="product__title"><%=product.title%></h1>
+
+                </header>
+                <div class="card__image">
+                    <img src="<%=product.imageUrl%>">
+                </div>
+                <div class="card__content">
+                    <h2 class="product__price">$ <%=product.price%></h2>
+                </div>
+
+                <div class="card__actions">
+                    <a type="button" href="admin/products/<%=product._id %>" class="btn btn-outline-primary">View Detail</a>
+
+                    <a type="button" href="admin/edit-product/<%= product._id %>"
+                        class="btn btn-outline-primary">Edit</a><br><br>
+                    <form action="admin/deleteProduct" method="post">
+                        <input type="hidden" name="id" value="<%= product._id %>">
+                        <!-- <a type="submit" href="/" class="btn btn-danger">DELETE</a> -->
+                        <button type="submit" class="btn btn-outline-warning">Delete</button>
+                    </form>
+                    <form action="/add-to-cart" method="post">
+                        <input type="hidden" name="id" value="<%= product._id %>">
+                        <!-- <a type="submit" href="/" class="btn btn-danger">DELETE</a> -->
+                        <button type="submit" class="btn btn-outline-warning">Add to Cart</button>
+                    </form>
+                </div>
+
+            </article>
+            <% }%>
+        </div>
+
+    </main>
+</body>
+
+<!--include end.ejs-->
+<%- include('fragments/end.ejs')%>

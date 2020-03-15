@@ -1,0 +1,14 @@
+<%- include('fragments/head.ejs')%>
+
+
+<body>
+    <main style="text-align:center;">
+        <%- include('fragments/navigation.ejs')%>
+        <div class="container">
+            <h1><b>Title:</b><%= prod.title%></h1>
+            <p><img src="<%= prod.imageUrl %>" alt="no picture"></p>
+            <P><b>Price: </b>$<%= prod.price %></P>
+            <p><b>Description:</b> <%= prod.description %></p>
+        </div>
+    </main>
+    <%- include('fragments/end.ejs')%>
